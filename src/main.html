@@ -1,0 +1,124 @@
+<html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body id="hacked">
+<h1>HACKED</h1>
+<div class="img-container">
+    <div class="img">
+        <img src="assets/hackerman_1.jpg"/>
+    </div>
+    <div class="img">
+        <img src="assets/hackerman_2.jpg"/>
+    </div>
+    <div class="img">
+        <img src="assets/hackerman_3.jpg"/>
+    </div>
+    <div class="img">
+        <img src="assets/hackerman_4.jpg"/>
+    </div>
+</div>
+</body>
+
+<script>
+    window.onbeforeunload = function () {
+        return "Yeet dabs on nUt loCkeD pC";
+    }
+    var elem = document.getElementById("hacked");
+
+    function init() {
+        elem.onkeydown = function () {
+            openFullscreen();
+        }
+
+        elem.onkeyup = function () {
+            openFullscreen();
+        }
+
+        // elem.onmouseenter = elem.onmouseleave = elem.onmousemove = elem.onmouseover =
+        elem.onmousedown = function () {
+            openFullscreen();
+        }
+
+        const randomElement = (list) => {
+            const randomElement = list[Math.floor(Math.random() * list.length)];
+            return randomElement;
+        }
+
+        function makeDiv(color) {
+            var divsize = ((Math.random() * 100) + 50).toFixed();
+            var greens = ['#7FFF00	', '#008F11', '#00ff41', '#fff', '#00FA9A'];
+            if (Math.random() > 0.9) {
+                greens.push('red');
+            }
+            if (!arguments.length) {
+                color = greens[Math.floor(Math.random() * greens.length)];
+            }
+            $newdiv = $('<div/>').css({
+                'width': divsize + 'px',
+                'height': divsize + 'px',
+                'font-size': '3rem'
+            });
+
+            const words = ["Hacked", "Hacked!!", "Lock your screen", "You have been visited by spooksters"]
+            var randomWord = randomElement(words);
+            var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+            var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+
+            $newdiv.text(randomWord).css({
+                'position': 'absolute',
+                'left': posx + 'px',
+                'top': posy + 'px',
+                'display': 'none',
+                'color': color
+            }).appendTo('body').fadeIn(300).delay(300).fadeOut(300, function () {
+                $(this).remove();
+                if (!arguments.length) {
+                    makeDiv();
+                } else {
+                    makeDiv(color);
+                }
+
+            });
+        }
+
+        makeDiv('#003B00');
+        setTimeout(function () {
+            makeDiv('#008F11');
+        }, 100);
+
+
+        setTimeout(function () {
+            makeDiv('#00ff41');
+        }, 300);
+
+        setTimeout(function () {
+            makeDiv();
+        }, 500);
+
+    }
+
+    init();
+
+
+    /* When the openFullscreen() function is executed, open the video in fullscreen.
+    Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+    function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            elem.msRequestFullscreen();
+        }
+    }
+</script>
+
+</html>
