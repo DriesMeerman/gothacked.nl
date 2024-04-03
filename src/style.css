@@ -9,13 +9,13 @@ h1 {
 }
 
 .img-container{
-    display: flex;
-    justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 *.img > img {
-    flex: auto;
-    max-width: 75%;
+    max-width: 100%;
 }
 
 @media (max-width: 800px) {
@@ -26,8 +26,6 @@ h1 {
         max-width: 100%;
     }
 }
-
-
 
 #matrix {
     position: absolute;
