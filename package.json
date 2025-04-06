@@ -1,0 +1,13 @@
+{
+  "name": "gothacked.nl",
+  "version": "1.0.0",
+  "description": "A fun hacked screen simulation",
+  "main": "src/main.html",
+  "scripts": {
+    "start": "live-server src --port=3000 --open=main.html",
+    "dev": "live-server src --port=3000"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

@@ -9,35 +9,56 @@
 
 <body id="hacked">
 <h1>HACKED</h1>
-<div class="img-container">
-    <div class="img">
-        <img src="assets/hackerman_1.jpg"/>
-    </div>
-    <div class="img">
-        <img src="assets/hackerman_2.jpg"/>
-    </div>
-    <div class="img">
-        <img src="assets/hackerman_3.jpg"/>
-    </div>
-    <div class="img">
-        <img src="assets/hackerman_4.jpg"/>
-    </div>
-    <div class="img">
-        <img src="assets/hackerman_5.jpg"/>
-    </div>
-    <div class="img">
-        <img src="assets/hackerman_6.jpg"/>
-    </div>
-    <div class="img">
-        <img src="assets/hackerman_7.jpg"/>
-    </div>
+<div class="img-container" id="imageContainer">
+    <!-- Images will be inserted here by JavaScript -->
 </div>
 </body>
 
 <script>
+    // Function to shuffle array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // Array of image paths
+    const images = [
+        'assets/hackerman_1.jpg',
+        'assets/hackerman_2.jpg',
+        'assets/hackerman_3.jpg',
+        'assets/hackerman_4.jpg',
+        'assets/hackerman_5.jpg',
+        'assets/hackerman_6.jpg',
+        'assets/hackerman_7.jpg'
+    ];
+
+    // Shuffle images and add them to the container
+    function addImages() {
+        const container = document.getElementById('imageContainer');
+        const shuffledImages = shuffleArray([...images]);
+
+        shuffledImages.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'img';
+            const img = document.createElement('img');
+            img.src = src;
+            div.appendChild(img);
+            container.appendChild(div);
+        });
+    }
+
+    // Add images when the page loads
+    window.onload = function() {
+        addImages();
+    };
+
     window.onbeforeunload = function () {
         return "Yeet dabs on nUt loCkeD pC";
     }
+
     var elem = document.getElementById("hacked");
 
     function init() {
