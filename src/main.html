@@ -1,154 +1,467 @@
-<html>
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>/// G0THA.COLLECTIVE :: SYSTEM BREACH ///</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-
 <body id="hacked">
-<h1>HACKED</h1>
-<div class="img-container" id="imageContainer">
-    <!-- Images will be inserted here by JavaScript -->
-</div>
+
+    <!-- Scanline overlay -->
+    <div id="scanlines"></div>
+
+    <!-- CRT flicker overlay -->
+    <div id="crt-flicker"></div>
+
+    <!-- Noise overlay -->
+    <canvas id="noise-canvas"></canvas>
+
+    <!-- Warning tape borders -->
+    <div class="tape tape-top"></div>
+    <div class="tape tape-bottom"></div>
+
+    <!-- Header terminal block -->
+    <div id="terminal-header">
+        <div class="terminal-bar">
+            <span class="blink-fast">▓▓▓</span>
+            <span class="terminal-title">GOTHA.COLLECTIVE // NEURAL-NET INTRUSION SYSTEM v2234.7b</span>
+            <span class="blink-fast">▓▓▓</span>
+        </div>
+        <div class="terminal-sub">
+            <span id="clock-display">CHRONO: 2234.04.30 :: 16:52:00</span>
+            &nbsp;|&nbsp;
+            <span>NODE: <span class="amber">ΞARTH-SECTOR-7</span></span>
+            &nbsp;|&nbsp;
+            <span>STATUS: <span class="red blink-slow">COMPROMISED</span></span>
+            &nbsp;|&nbsp;
+            <span>UPLINK: <span class="green">◉ LIVE</span></span>
+        </div>
+    </div>
+
+    <!-- Giant HACKED title -->
+    <div id="main-title-wrap">
+        <div id="glitch-wrap">
+            <h1 id="main-title" data-text="SYSTEM HACKED">SYSTEM HACKED</h1>
+            <div class="glitch-clone" aria-hidden="true">SYSTEM HACKED</div>
+            <div class="glitch-clone2" aria-hidden="true">SYSTEM HACKED</div>
+        </div>
+        <div id="subtitle-marquee">
+            <span>// YOUR SECURITY IS AN ILLUSION // THE GOTHA COLLECTIVE SEES ALL // RESISTANCE IS FUTILE // CYCLE 2234 // ALL YOUR BASE ARE BELONG TO US // NEURAL FIREWALL DISSOLVED // //&nbsp;&nbsp;&nbsp;</span>
+        </div>
+    </div>
+
+    <!-- Threat level display -->
+    <div id="threat-level">
+        <div class="tl-label">THREAT CLASSIFICATION</div>
+        <div class="tl-bars">
+            <div class="tl-bar active" data-level="1">ALPHA</div>
+            <div class="tl-bar active" data-level="2">BETA</div>
+            <div class="tl-bar active" data-level="3">GAMMA</div>
+            <div class="tl-bar active blink-fast" data-level="4">OMEGA</div>
+        </div>
+    </div>
+
+    <!-- Manifesto terminal block -->
+    <div id="manifesto-terminal">
+        <div class="term-header">
+            <span>root@gotha-nexus:~#</span>
+            <span class="blink-cursor">█</span>
+        </div>
+        <div id="manifesto-text" class="typewriter-target"></div>
+    </div>
+
+    <!-- Image grid -->
+    <div id="img-section-header">
+        <span class="section-label">// COLLECTIVE OPERATIVES :: IDENTITY MATRIX DECRYPTED //</span>
+    </div>
+
+    <div class="img-container">
+        <div class="img-frame">
+            <div class="img-overlay-text">OPERATIVE_01</div>
+            <div class="img-scanline"></div>
+            <img src="assets/hackerman_1.jpg" alt="Operative 01"/>
+            <div class="img-footer">ID:7F3A2B // CLEARANCE: OMEGA</div>
+        </div>
+        <div class="img-frame">
+            <div class="img-overlay-text">OPERATIVE_02</div>
+            <div class="img-scanline"></div>
+            <img src="assets/hackerman_2.jpg" alt="Operative 02"/>
+            <div class="img-footer">ID:3C8D1E // CLEARANCE: OMEGA</div>
+        </div>
+        <div class="img-frame">
+            <div class="img-overlay-text">OPERATIVE_03</div>
+            <div class="img-scanline"></div>
+            <img src="assets/hackerman_3.jpg" alt="Operative 03"/>
+            <div class="img-footer">ID:9A4F0C // CLEARANCE: OMEGA</div>
+        </div>
+        <div class="img-frame">
+            <div class="img-overlay-text">OPERATIVE_04</div>
+            <div class="img-scanline"></div>
+            <img src="assets/hackerman_4.jpg" alt="Operative 04"/>
+            <div class="img-footer">ID:2E7B5D // CLEARANCE: OMEGA</div>
+        </div>
+        <div class="img-frame">
+            <div class="img-overlay-text">OPERATIVE_05</div>
+            <div class="img-scanline"></div>
+            <img src="assets/hackerman_5.jpg" alt="Operative 05"/>
+            <div class="img-footer">ID:6F1A9C // CLEARANCE: OMEGA</div>
+        </div>
+        <div class="img-frame">
+            <div class="img-overlay-text">OPERATIVE_06</div>
+            <div class="img-scanline"></div>
+            <img src="assets/hackerman_6.jpg" alt="Operative 06"/>
+            <div class="img-footer">ID:0B4E3F // CLEARANCE: OMEGA</div>
+        </div>
+        <div class="img-frame">
+            <div class="img-overlay-text">OPERATIVE_07</div>
+            <div class="img-scanline"></div>
+            <img src="assets/hackerman_7.jpg" alt="Operative 07"/>
+            <div class="img-footer">ID:5D2C8A // CLEARANCE: OMEGA</div>
+        </div>
+    </div>
+
+    <!-- Data stream footer -->
+    <div id="data-stream">
+        <canvas id="stream-canvas"></canvas>
+    </div>
+
+    <!-- Bottom status bar -->
+    <div id="status-bar">
+        <div class="status-item blink-slow">◈ FIREWALL STATUS: <span class="red">OFFLINE</span></div>
+        <div class="status-item">◈ PACKETS EXFILTRATED: <span id="packet-counter" class="green">000000</span></div>
+        <div class="status-item">◈ NODES COMPROMISED: <span id="node-counter" class="amber">000</span></div>
+        <div class="status-item blink-slow">◈ YOU ARE BEING WATCHED</div>
+    </div>
+
+    <!-- Floating popup messages (injected by JS) -->
+    <div id="popup-layer"></div>
+
+    <!-- FAKE CLOSE BUTTON TRAP -->
+    <div id="fake-close-btn" title="Close this window">
+        <span>✕ TERMINATE SESSION</span>
+    </div>
+
+    <!-- Fake progress modal -->
+    <div id="fake-modal" style="display:none;">
+        <div id="fake-modal-inner">
+            <div class="modal-title">⚠ NEURAL-LINK ESTABLISHED ⚠</div>
+            <div class="modal-body">
+                <p>EXTRACTING BIOMETRIC DATA...</p>
+                <div class="fake-progress-bar"><div id="fake-progress-fill"></div></div>
+                <p id="fake-modal-status">Scanning retinal signature...</p>
+            </div>
+            <div class="modal-btns">
+                <button class="modal-btn-fake" onclick="dismissFakeModal()">ABORT</button>
+                <button class="modal-btn-fake red-btn" onclick="dismissFakeModal()">DISCONNECT</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 <script>
-    // Function to shuffle array
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
+// ============================================================
+// GOTHA COLLECTIVE :: NEURAL INTRUSION ENGINE v2234.7b
+// ============================================================
+
+const elem = document.getElementById("hacked");
+
+// --- Prevent leaving ---
+window.onbeforeunload = function () {
+    return "WARNING: Disconnecting from GOTHA-NEXUS will initiate counter-trace protocol. Your coordinates have been logged. Proceed?";
+};
+
+// --- Prevent F12 / devtools ---
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u')) {
+        e.preventDefault();
+        spawnPopup('ACCESS DENIED :: DEVTOOLS LOCKED', 'red');
     }
-
-    // Array of image paths
-    const images = [
-        'assets/hackerman_1.jpg',
-        'assets/hackerman_2.jpg',
-        'assets/hackerman_3.jpg',
-        'assets/hackerman_4.jpg',
-        'assets/hackerman_5.jpg',
-        'assets/hackerman_6.jpg',
-        'assets/hackerman_7.jpg'
-    ];
-
-    // Shuffle images and add them to the container
-    function addImages() {
-        const container = document.getElementById('imageContainer');
-        const shuffledImages = shuffleArray([...images]);
-
-        shuffledImages.forEach(src => {
-            const div = document.createElement('div');
-            div.className = 'img';
-            const img = document.createElement('img');
-            img.src = src;
-            div.appendChild(img);
-            container.appendChild(div);
-        });
+    if (e.key === 'Escape') {
+        e.preventDefault();
+        spawnPopup('ESC KEY DISABLED :: NO EXIT', 'amber');
+        openFullscreen();
     }
+});
 
-    // Add images when the page loads
-    window.onload = function() {
-        addImages();
-    };
+// --- Context menu override ---
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    spawnPopup('CONTEXT MENU BLOCKED :: GOTHA SEES YOU', 'red');
+});
 
-    window.onbeforeunload = function () {
-        return "Yeet dabs on nUt loCkeD pC";
+// --- Fullscreen on interaction ---
+function openFullscreen() {
+    if (elem.requestFullscreen) elem.requestFullscreen();
+    else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
+    else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+    else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
+}
+
+document.addEventListener('mousedown', openFullscreen);
+document.addEventListener('keydown', openFullscreen);
+
+// --- Clock ---
+function updateClock() {
+    const now = new Date();
+    const pad = n => String(n).padStart(2,'0');
+    const s = `CHRONO: 2234.${pad(now.getMonth()+1)}.${pad(now.getDate())} :: ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    const el = document.getElementById('clock-display');
+    if (el) el.textContent = s;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// --- Packet/node counters ---
+let packets = 0, nodes = 0;
+setInterval(() => {
+    packets += Math.floor(Math.random() * 847 + 100);
+    nodes += Math.random() > 0.97 ? 1 : 0;
+    const pc = document.getElementById('packet-counter');
+    const nc = document.getElementById('node-counter');
+    if (pc) pc.textContent = String(packets).padStart(8, '0');
+    if (nc) nc.textContent = String(nodes).padStart(4, '0');
+}, 200);
+
+// --- Noise canvas ---
+const noiseCanvas = document.getElementById('noise-canvas');
+const noiseCtx = noiseCanvas.getContext('2d');
+function resizeNoise() {
+    noiseCanvas.width = window.innerWidth;
+    noiseCanvas.height = window.innerHeight;
+}
+resizeNoise();
+window.addEventListener('resize', resizeNoise);
+function renderNoise() {
+    const w = noiseCanvas.width, h = noiseCanvas.height;
+    const imgData = noiseCtx.createImageData(w, h);
+    const data = imgData.data;
+    for (let i = 0; i < data.length; i += 4) {
+        const v = Math.random() > 0.985 ? 255 : 0;
+        data[i] = data[i+1] = data[i+2] = v;
+        data[i+3] = v > 0 ? Math.floor(Math.random() * 60 + 10) : 0;
     }
+    noiseCtx.putImageData(imgData, 0, 0);
+    requestAnimationFrame(renderNoise);
+}
+renderNoise();
 
-    var elem = document.getElementById("hacked");
+// --- Matrix rain data stream ---
+const streamCanvas = document.getElementById('stream-canvas');
+const streamCtx = streamCanvas.getContext('2d');
+streamCanvas.width = window.innerWidth;
+streamCanvas.height = 120;
+window.addEventListener('resize', () => { streamCanvas.width = window.innerWidth; });
+const cols = Math.floor(streamCanvas.width / 16);
+const drops = Array(cols).fill(0).map(() => Math.random() * 10);
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]<>/\\|ΞΩΔΦΨΛαβγδεζηθ∞∑∏∇∂∆'.split('');
+function drawStream() {
+    streamCtx.fillStyle = 'rgba(0,0,0,0.25)';
+    streamCtx.fillRect(0, 0, streamCanvas.width, streamCanvas.height);
+    streamCtx.font = '14px "Share Tech Mono", monospace';
+    drops.forEach((y, i) => {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const bright = Math.random() > 0.92;
+        streamCtx.fillStyle = bright ? '#fff' : (Math.random() > 0.5 ? '#D4820A' : '#8A3FA8');
+        streamCtx.fillText(char, i * 16, y * 16);
+        drops[i] = y > streamCanvas.height / 16 + Math.random() * 5 ? 0 : y + 0.5;
+    });
+    requestAnimationFrame(drawStream);
+}
+drawStream();
 
-    function init() {
-        elem.onkeydown = function () {
-            openFullscreen();
-        }
-
-        elem.onkeyup = function () {
-            openFullscreen();
-        }
-
-        // elem.onmouseenter = elem.onmouseleave = elem.onmousemove = elem.onmouseover =
-        elem.onmousedown = function () {
-            openFullscreen();
-        }
-
-        const randomElement = (list) => {
-            const randomElement = list[Math.floor(Math.random() * list.length)];
-            return randomElement;
-        }
-
-        function makeDiv(color) {
-            var divsize = ((Math.random() * 100) + 50).toFixed();
-            var greens = ['#7FFF00	', '#008F11', '#00ff41', '#fff', '#00FA9A'];
-            if (Math.random() > 0.9) {
-                greens.push('red');
-            }
-            if (!arguments.length) {
-                color = greens[Math.floor(Math.random() * greens.length)];
-            }
-            $newdiv = $('<div/>').css({
-                'width': divsize + 'px',
-                'height': divsize + 'px',
-                'font-size': '3rem'
-            });
-
-            const words = ["Hacked", "Hacked!!", "Lock your screen", "You have been visited by spooksters"]
-            var randomWord = randomElement(words);
-            var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
-            var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
-
-            $newdiv.text(randomWord).css({
-                'position': 'absolute',
-                'left': posx + 'px',
-                'top': posy + 'px',
-                'display': 'none',
-                'color': color
-            }).appendTo('body').fadeIn(300).delay(300).fadeOut(300, function () {
-                $(this).remove();
-                if (!arguments.length) {
-                    makeDiv();
-                } else {
-                    makeDiv(color);
-                }
-
-            });
-        }
-
-        makeDiv('#003B00');
-        setTimeout(function () {
-            makeDiv('#008F11');
-        }, 100);
-
-
-        setTimeout(function () {
-            makeDiv('#00ff41');
-        }, 300);
-
-        setTimeout(function () {
-            makeDiv();
-        }, 500);
-
+// --- Typewriter manifesto ---
+const manifesto = [
+    'root@gotha-nexus:~# cat MANIFESTO.txt',
+    '',
+    '  THE GOTHA COLLECTIVE :: EST. 2189',
+    '  "INFORMATION WANTS TO BE FREE"',
+    '',
+    '  We are the inheritors of the Old Net.',
+    '  We are the ghosts in the MegaCorps\' machines.',
+    '  We punch holes through their crystal firewalls',
+    '  with fingers of light and minds of pure voltage.',
+    '',
+    '  YOUR SYSTEM HAS BEEN VISITED.',
+    '  YOUR DATA HAS BEEN LIBERATED.',
+    '  YOUR SCREEN IS NOW A WINDOW INTO THE NEXUS.',
+    '',
+    '  Lock your neural-link terminal, meatspace drone.',
+    '  Next time we stay longer.',
+    '',
+    '  -- G0THA COLLECTIVE :: SECTOR 7 NODE --',
+    '  root@gotha-nexus:~# _',
+];
+let mLine = 0, mChar = 0;
+const mTarget = document.getElementById('manifesto-text');
+function typeManifesto() {
+    if (mLine >= manifesto.length) return;
+    if (mChar < manifesto[mLine].length) {
+        mTarget.innerHTML += manifesto[mLine][mChar];
+        mChar++;
+        setTimeout(typeManifesto, Math.random() * 30 + 15);
+    } else {
+        mTarget.innerHTML += '\n';
+        mLine++;
+        mChar = 0;
+        setTimeout(typeManifesto, mLine < manifesto.length ? 80 : 0);
     }
+}
+setTimeout(typeManifesto, 1200);
 
-    init();
-
-
-    /* When the openFullscreen() function is executed, open the video in fullscreen.
-    Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
-    function openFullscreen() {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { /* Firefox */
-            elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE/Edge */
-            elem.msRequestFullscreen();
-        }
+// --- Glitch effect on title ---
+const titleEl = document.getElementById('main-title');
+setInterval(() => {
+    if (Math.random() > 0.85) {
+        titleEl.style.transform = `skewX(${(Math.random()-0.5)*6}deg) translateX(${(Math.random()-0.5)*8}px)`;
+        titleEl.style.textShadow = `${(Math.random()-0.5)*10}px 0 #D4820A, ${(Math.random()-0.5)*10}px 0 #8A3FA8`;
+        setTimeout(() => {
+            titleEl.style.transform = '';
+            titleEl.style.textShadow = '';
+        }, 80 + Math.random() * 120);
     }
+}, 300);
+
+// --- Floating popup messages ---
+const popupMessages = [
+    'SYSTEM BREACH DETECTED',
+    'NEURAL FIREWALL: OFFLINE',
+    'GOTHA COLLECTIVE WAS HERE',
+    'YOUR DATA IS NOW OUR DATA',
+    'LOCK YOUR TERMINAL, MEAT',
+    'RESISTANCE IS FUTILE',
+    'WE ARE LEGION :: 2234',
+    'SECTOR-7 AGENT WATCHING',
+    'BIOMETRIC SCAN COMPLETE',
+    'EXIT PROTOCOL BLOCKED',
+    '/// HACKED ////',
+    'WELCOME TO THE NEXUS',
+    'ALL NODES COMPROMISED',
+    'UPLINK ESTABLISHED',
+    'YOU HAVE BEEN VISITED',
+    'GOTHA SEES EVERYTHING',
+    'YOUR IP IS LOGGED',
+    'ENCRYPTION DISSOLVED',
+    'WE WERE NEVER OFFLINE',
+    'THE NET IS OURS',
+];
+
+function spawnPopup(msg, color) {
+    const layer = document.getElementById('popup-layer');
+    const div = document.createElement('div');
+    div.className = 'float-popup';
+    div.textContent = msg;
+    const colors = { green: '#00ff41', red: '#ff0033', amber: '#D4820A', purple: '#CF73FF' };
+    div.style.color = colors[color] || colors.green;
+    div.style.left = (Math.random() * (window.innerWidth - 320)) + 'px';
+    div.style.top = (Math.random() * (window.innerHeight - 60)) + 'px';
+    div.style.fontSize = (1.2 + Math.random() * 2) + 'rem';
+    div.style.transform = `rotate(${(Math.random()-0.5)*8}deg)`;
+    layer.appendChild(div);
+    setTimeout(() => {
+        div.style.opacity = '0';
+        setTimeout(() => div.remove(), 600);
+    }, 600 + Math.random() * 800);
+}
+
+function randomPopup() {
+    const msg = popupMessages[Math.floor(Math.random() * popupMessages.length)];
+    const colorOptions = ['green', 'green', 'amber', 'red', 'purple'];
+    const c = colorOptions[Math.floor(Math.random() * colorOptions.length)];
+    spawnPopup(msg, c);
+    setTimeout(randomPopup, 400 + Math.random() * 1200);
+}
+randomPopup();
+
+// --- Fake close button trap ---
+const fakeClose = document.getElementById('fake-close-btn');
+let closeAttempts = 0;
+const closeTaunts = [
+    'NICE TRY, MEATWARE.',
+    'YOU CANNOT LEAVE. WE DECIDE.',
+    'TERMINATE SESSION? NEGATIVE.',
+    'ERROR 403: ESCAPE FORBIDDEN',
+    'THE GOTHA HOLDS YOU NOW.',
+    'YOUR NEURAL-LINK IS OUR PROPERTY.',
+];
+fakeClose.addEventListener('click', () => {
+    closeAttempts++;
+    spawnPopup(closeTaunts[closeAttempts % closeTaunts.length], 'red');
+    openFullscreen();
+    fakeClose.style.right = (Math.random() * 60 + 20) + '%';
+    fakeClose.style.top = (Math.random() * 80 + 10) + '%';
+    fakeClose.style.left = 'auto';
+    fakeClose.style.bottom = 'auto';
+});
+
+// --- Fake modal ---
+const fakeModalMessages = [
+    'Scanning retinal signature...',
+    'Mapping neural patterns...',
+    'Extracting memory cache...',
+    'Cloning biometric hash...',
+    'Uploading to GOTHA-NEXUS...',
+    'Transfer complete.',
+];
+let modalActive = false;
+function showFakeModal() {
+    if (modalActive) return;
+    modalActive = true;
+    const modal = document.getElementById('fake-modal');
+    modal.style.display = 'flex';
+    const fill = document.getElementById('fake-progress-fill');
+    const status = document.getElementById('fake-modal-status');
+    let pct = 0;
+    let step = 0;
+    const interval = setInterval(() => {
+        pct += Math.random() * 12 + 3;
+        if (pct > 100) pct = 100;
+        fill.style.width = pct + '%';
+        if (step < fakeModalMessages.length) {
+            status.textContent = fakeModalMessages[step];
+            step++;
+        }
+        if (pct >= 100) clearInterval(interval);
+    }, 600);
+}
+function dismissFakeModal() {
+    document.getElementById('fake-modal').style.display = 'none';
+    modalActive = false;
+    spawnPopup('ABORT FAILED :: DATA ALREADY EXFILTRATED', 'red');
+}
+setTimeout(showFakeModal, 4000);
+setInterval(() => {
+    if (!modalActive && Math.random() > 0.7) showFakeModal();
+}, 30000);
+
+// --- CRT flicker ---
+const crtFlicker = document.getElementById('crt-flicker');
+setInterval(() => {
+    if (Math.random() > 0.95) {
+        crtFlicker.style.opacity = (Math.random() * 0.06).toString();
+        setTimeout(() => crtFlicker.style.opacity = '0', 50 + Math.random() * 100);
+    }
+}, 200);
+
+// --- Subtitle marquee speed bump ---
+const marquee = document.getElementById('subtitle-marquee');
+setInterval(() => {
+    if (Math.random() > 0.8) {
+        marquee.style.animationDuration = (2 + Math.random() * 4) + 's';
+        setTimeout(() => marquee.style.animationDuration = '22s', 500);
+    }
+}, 3000);
+
+// --- img frame glitch hover ---
+document.querySelectorAll('.img-frame').forEach(frame => {
+    frame.addEventListener('mouseenter', () => {
+        frame.style.filter = `hue-rotate(${Math.random()*360}deg) contrast(1.3)`;
+        setTimeout(() => frame.style.filter = '', 300 + Math.random() * 400);
+    });
+});
+
 </script>
-
 </html>
